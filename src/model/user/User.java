@@ -5,7 +5,7 @@ import service.IpostService;
 public abstract class User extends GuestUser implements IpostService{
 	private String username;
 	private String password;
-	private String nameAndSurnameOrTitle;
+	protected String nameAndSurnameOrTitle;
 	
 	public String getNameAndSurnameOrTitle() {
 		return nameAndSurnameOrTitle;
@@ -14,7 +14,7 @@ public abstract class User extends GuestUser implements IpostService{
 	public String getUsername() {
 		return username;
 	}
-	public void setUsername(String username) {
+	public void setUsername() {
 		this.username = nameAndSurnameOrTitle + " " + getUserId();
 	}
 	public String getPassword() {
