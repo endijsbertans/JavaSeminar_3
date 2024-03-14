@@ -1,8 +1,4 @@
-/**
- * 
- */
-/**
- * 
- */
+
 module JavaSeminar_3 {
+	
 }
