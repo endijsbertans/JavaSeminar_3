@@ -3,21 +3,23 @@ package model;
 import java.time.LocalDateTime;
 
 public class Post {
+	//1. variables
 	private String msg;
 	private LocalDateTime dateTime;
-	private int countOfLikes = 0;
-	
-	public String getMsg(){
+	private int countOfLikes = 0; 
+	//2. get and set
+	public String getMsg() {
 		return msg;
 	}
+	
+	
 	public void setMsg(String msg) {
 		if(msg != null && msg.length() > 5 && msg.length() < 300)
-			this.msg = "----";
-		else
 			this.msg = msg;
-			
+		else
+			this.msg = "------";
 	}
-	public LocalDateTime getDate() {
+	public LocalDateTime getDateTime() {
 		return dateTime;
 	}
 	public void setDateTime() {
@@ -26,19 +28,29 @@ public class Post {
 	public int getCountOfLikes() {
 		return countOfLikes;
 	}
-	public void incrementCountOfLikes(int countOfLikes) {
+	//TODO glabajam lietotajus, kuri ir piespieduši like
+	public void incrementCountOfLikes() {
 		this.countOfLikes++;
 	}
+		
+	//3. constructors
 	public Post() {
 		setMsg("Test msg");
 		setDateTime();
 	}
+	
 	public Post(String msg) {
 		setMsg(msg);
 		setDateTime();
 	}
-	@Override
+	
+	
+	//4. toString
 	public String toString() {
-		return msg + " ( " + dateTime + " ) " + "Likes [" + countOfLikes + " ]";
+		return msg + "(" + dateTime + ") likes [" +countOfLikes+ "]";
 	}
+	
+		
+	//5. other functions
+
 }

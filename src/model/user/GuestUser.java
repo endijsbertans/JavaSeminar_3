@@ -1,25 +1,37 @@
 package model.user;
 
+//import java.time.LocalDateTime;
+
 public class GuestUser {
-	private long userId;
-	private static long counter = 0;
+	//1. variables
+	private long userID;
 	
-	public long getUserId() {
-		return userId;
-	}
-	public void setUserId() {
-		userId = counter++;
-	}
-	public static long getCounter() {
-		return counter;
+	private static long counter = 0;
+	//2. get and set
+
+	public long getUserID() {
+		return userID;
 	}
 
+	public void setUserID() {
+		this.userID = counter++;
+	}
+		
+	//3. constructors
 	public GuestUser() {
-		setUserId();
+		setUserID();
 	}
+	
+	//4. toString
+	
 	public String toString() {
-		return " " + userId;
+		return "" + userID;
 	}
 	
+	//5. other functions
 	
+	//TODO findUser
+	//TODO findPage
+	//TODO findPublicPostsOfPrivateUser
+	//TODO findPublicPostsOfPage
 }
