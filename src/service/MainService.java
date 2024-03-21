@@ -6,6 +6,7 @@ import java.util.Arrays;
 import model.Post;
 import model.PostType;
 import model.BusinessUser;
+import model.Page;
 import model.user.GuestUser;
 import model.user.PrivateUser;
 
@@ -51,6 +52,23 @@ public class MainService {
 		System.out.println(u6.getUsername() + ": followers ->");
 		System.out.println(u6.getFollowers());
 		
+		try {
+			u7.createPage("Hesburgers Vpils", "Tortilju labakaa iestaade");
+			u7.createPage("Hesburgers Dpils", "Sliktaaki kuponi");
+			
+			u7.publishPostInPage("Hesburgers Vpils", "Tortiljas par veltiii!!!!");
+			u7.publishPostInPage("Hesburgers Vpils", "Tortiljas perc vienu sanjem otru");
+			u7.publishPostInPage("Hesburgers Dpils", "Tortiljas ar 100% uzcenojumu");
+		} catch (Exception e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
+		System.out.println("----------------------");
+		System.out.println(u7.getUsername()+ "Pages: ");
+		for(Page tempP: u7.getListOfPages()) {
+			System.out.println(tempP + "-->");
+			System.out.println(tempP.getPostsInPage());
+		}
 		
 		
 	}

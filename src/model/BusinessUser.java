@@ -9,6 +9,9 @@ import model.user.User;
 public class BusinessUser extends User {
 
 	//1. variables
+	private ArrayList<Post> privatePosts = new ArrayList<Post>();
+	private ArrayList<Post> publicPosts = new ArrayList<Post>();
+	private ArrayList<User> followers = new ArrayList<User>();
 	private String PVNNo;//example: LV40003245752
 	private ArrayList<Page> listOfPages = new ArrayList<Page>();
 	
@@ -62,16 +65,35 @@ public class BusinessUser extends User {
 	}
 	
 	
-	
-	
-	
 	//5. other functions
+	public void createPage(String title, String description) throws Exception {
+		for(Page tempP: listOfPages) {
+			if(tempP.getTitle().equals(title))
+				throw new Exception("Page already exists");
+		}
+		listOfPages.add(new Page(title, description));
+	}
+	
+	public void publishPostInPage(String pageTitle, String msg) throws Exception {
+		// TODO parbaudes
+		for(Page tempP: listOfPages) {
+			if(tempP.getTitle().equals(pageTitle)) {
+				Post newPost = publishPost(PostType.publicPost, msg);
+				tempP.getPostsInPage().add(newPost);
+				return;
+			}
+		}
+		throw new Exception("PAGE NOT FOUND");
+	}
 	
 	@Override
-	public void publishPost(PostType type, String msg) throws Exception {
-		// TODO Auto-generated method stub
+	public Post publishPost(PostType type, String msg) throws Exception{
+		// veic pārbaudi uz not null abiem input mainīgajiem un izmet izņēmumu
+		if(type == null || msg ==  null) throw new Exception("Problems with input params");
 		
-		
+		//izveidojam Post objektu
+		Post newPost = new Post(msg);
+		return newPost;	
 	}
 
 	
